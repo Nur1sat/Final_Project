@@ -393,7 +393,7 @@
                 <h1>Contact Us</h1>
                 <div class="box_container">
                     <div class="info_box">
-                        <h3>Send Message</h3>
+                        <h3 style="padding-bottom:50px;">Send Message</h3>
                         <form onsubmit="sendMessage(event)">
                             <div class="input_group">
                                 <label for="user_name">Your Name</label>
@@ -413,8 +413,8 @@
                     </div>
                     <div class="info_box">
                         <h3>Contact Info</h3>
-                        <p>📧 hello@motivation.com</p>
-                        <p>📱 123-456-7890</p>
+                        <p>📧 zhaksybaevnursat@gmail.com</p>
+                        <p>📱 +7(747)-360-6910</p>
                         <p>🌐 Follow us online</p>
                         <br>
                         <h4>Send Us a Quote</h4>
@@ -446,7 +446,8 @@
         }
 
         function showMobileMenu() {
-            document.querySelector('.menu_list').classList.toggle('show_mobile');
+            const menuList = document.querySelector('.menu_list');
+            menuList.classList.toggle('show_mobile');
         }
 
         async function getNewQuote() {
