@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Motivation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(blue, purple);
+            min-height: 100vh;
+            color: white;
+        }
+
+        .main_container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .top_header {
+            background: rgba(0, 0, 0, 0.5);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .menu_bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .site_logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: yellow;
+        }
+
+        .menu_list {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .menu_list a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 20px;
+            transition: background 0.3s;
+        }
+
+        .menu_list a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .menu_list a.selected {
+            background: orange;
+        }
+
+        .mobile_menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile_menu span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+        }
+
+        .content_area {
+            margin-top: 120px;
+            padding: 20px 0;
+        }
+
+        .single_page {
+            display: none;
+        }
+
+        .single_page.show {
+            display: block;
+        }
+
+        .big_title {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .big_title h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: yellow;
+        }
+
+        .big_title p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .quote_box {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .quote_box:hover {
+            transform: translateY(-10px);
+        }
+
+        .quote_words {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .quote_person {
+            font-size: 16px;
+            opacity: 0.8;
+        }
+
+        .click_button {
+            background: linear-gradient(orange, red);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+            transition: transform 0.3s;
+        }
+
+        .click_button:hover {
+            transform: translateY(-3px);
+        }
+
+        .box_container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .info_box {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            transition: transform 0.3s;
+        }
+
+        .info_box:hover {
+            transform: translateY(-5px);
+        }
+
+        .input_group {
+            margin-bottom: 20px;
+        }
+
+        .input_group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .input_group input,
+        .input_group textarea {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 16px;
+        }
+
+        .input_group input::placeholder,
+        .input_group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .loading_area {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .loading_circle {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-top: 5px solid white;
+            border-radius: 50%;
+            animation: spin_around 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin_around {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .saved_quotes {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .saved_item {
+            background: rgba(255, 255, 255, 0.1);
+            margin: 15px 0;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid orange;
+        }
+
+        .number_boxes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .number_box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .big_number {
+            font-size: 36px;
+            font-weight: bold;
+            color: yellow;
+        }
+
+        @media (max-width: 768px) {
+            .menu_list {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.9);
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .menu_list.show_mobile {
+                display: flex;
+            }
+
+            .mobile_menu {
+                display: flex;
+            }
+
+            .big_title h1 {
+                font-size: 32px;
+            }
+
+            .quote_words {
+                font-size: 18px;
+            }
+
+            .box_container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="top_header">
+        <nav class="main_container">
+            <div class="menu_bar">
+                <div class="site_logo">Daily Motivation</div>
+                <ul class="menu_list">
+                    <li><a href="#" onclick="changePage('home')" class="selected">Home</a></li>
+                    <li><a href="#" onclick="changePage('quotes')">Quotes</a></li>
+                    <li><a href="#" onclick="changePage('categories')">Categories</a></li>
+                    <li><a href="#" onclick="changePage('favorites')">Favorites</a></li>
+                    <li><a href="#" onclick="changePage('stats')">Stats</a></li>
+                    <li><a href="#" onclick="changePage('contact')">Contact</a></li>
+                </ul>
+                <div class="mobile_menu" onclick="showMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main_container">
+        <div class="content_area">
+            <div id="home" class="single_page show">
+                <div class="big_title">
+                    <h1>Daily Motivation</h1>
+                    <p>Get inspired with amazing quotes every day</p>
+                    <button class="click_button" onclick="getNewQuote()">Get New Quote</button>
+                </div>
+                <div id="main_quote" class="quote_box">
+                    <div class="loading_area">
+                        <div class="loading_circle"></div>
+                        <p>Getting your quote...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="quotes" class="single_page">
+                <h1>All Quotes</h1>
+                <div class="info_box">
+                    <button class="click_button" onclick="loadManyQuotes()">Load Quotes</button>
+                    <button class="click_button" onclick="removeAllQuotes()">Clear All</button>
+                </div>
+                <div id="all_quotes_area" class="box_container"></div>
+            </div>
+
+            <div id="categories" class="single_page">
+                <h1>Quote Types</h1>
+                <div class="box_container">
+                    <div class="info_box" onclick="getQuoteType('motivational')">
+                        <h3>💪 Motivational</h3>
+                        <p>Quotes to keep you going</p>
+                    </div>
+                    <div class="info_box" onclick="getQuoteType('success')">
+                        <h3>🏆 Success</h3>
+                        <p>Quotes about winning</p>
+                    </div>
+                    <div class="info_box" onclick="getQuoteType('inspirational')">
+                        <h3>⭐ Inspirational</h3>
+                        <p>Quotes to inspire you</p>
+                    </div>
+                    <div class="info_box" onclick="getQuoteType('life')">
+                        <h3>🌟 Life</h3>
+                        <p>Quotes about living</p>
+                    </div>
+                </div>
+                <div id="type_quotes_area"></div>
+            </div>
+
+            <div id="favorites" class="single_page">
+                <h1>My Favorite Quotes</h1>
+                <div class="info_box">
+                    <p>Save quotes you like here!</p>
+                    <button class="click_button" onclick="removeAllFavorites()">Clear All Favorites</button>
+                </div>
+                <div id="favorite_quotes_area" class="saved_quotes"></div>
+            </div>
+
+            <div id="stats" class="single_page">
+                <h1>My Stats</h1>
+                <div class="number_boxes">
+                    <div class="number_box">
+                        <div class="big_number" id="total_quotes_seen">0</div>
+                        <p>Quotes Seen</p>
+                    </div>
+                    <div class="number_box">
+                        <div class="big_number" id="total_favorites">0</div>
+                        <p>Favorites</p>
+                    </div>
+                    <div class="number_box">
+                        <div class="big_number" id="days_using">1</div>
+                        <p>Days Using App</p>
+                    </div>
+                </div>
+                <div class="info_box">
+                    <h3>Your Progress</h3>
+                    <p>Keep using the app daily!</p>
+                    <button class="click_button" onclick="clearAllStats()">Reset All Stats</button>
+                </div>
+            </div>
+
+            <div id="contact" class="single_page">
+                <h1>Contact Us</h1>
+                <div class="box_container">
+                    <div class="info_box">
+                        <h3>Send Message</h3>
+                        <form onsubmit="sendMessage(event)">
+                            <div class="input_group">
+                                <label for="user_name">Your Name</label>
+                                <input type="text" id="user_name" required placeholder="Enter your name">
+                            </div>
+                            <div class="input_group">
+                                <label for="user_email">Your Email</label>
+                                <input type="email" id="user_email" required placeholder="Enter your email">
+                            </div>
+                            <div class="input_group">
+                                <label for="user_message">Your Message</label>
+                                <textarea id="user_message" rows="5" required
+                                    placeholder="Write your message..."></textarea>
+                            </div>
+                            <button type="submit" class="click_button">Send Message</button>
+                        </form>
+                    </div>
+                    <div class="info_box">
+                        <h3>Contact Info</h3>
+                        <p>📧 hello@motivation.com</p>
+                        <p>📱 123-456-7890</p>
+                        <p>🌐 Follow us online</p>
+                        <br>
+                        <h4>Send Us a Quote</h4>
+                        <p>Have a good quote? Share it!</p>
+                        <button class="click_button" onclick="shareYourQuote()">Share Quote</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        let oneQuote = null;
+        let allQuotes = [];
+        let myFavs = JSON.parse(localStorage.getItem("my_favorites")) || [];
+        let myStats = JSON.parse(localStorage.getItem("my_stats")) || {
+            seen: 0,
+            favs: 0,
+            days: 1
+        };
+
+        function changePage(page, link) {
+            document.querySelectorAll('.single_page').forEach(p => p.classList.remove('show'));
+            document.querySelectorAll('.menu_list a').forEach(a => a.classList.remove('selected'));
+            document.getElementById(page).classList.add('show');
+            link.classList.add('selected');
+
+            if (page === "favorites") showFavs();
+            if (page === "stats") showStats();
+        }
+
+        function showMobileMenu() {
+            document.querySelector('.menu_list').classList.toggle('show_mobile');
+        }
+
+        async function getNewQuote() {
+            let box = document.getElementById("main_quote");
+            box.innerHTML = '<div class="loading_area"><div class="loading_circle"></div><p>Loading...</p></div>';
+            try {
+                let res = await fetch("https://api.breakingbadquotes.xyz/v1/quotes");
+                let data = await res.json();
+                oneQuote = { text: data[0].quote, author: data[0].author };
+                showQuote(oneQuote, box);
+                addToStats("seen");
+            } catch {
+                box.innerHTML = "<p>Could not load quote.</p>";
+            }
+        }
+
+        function showQuote(q, box) {
+            box.innerHTML = `
+      <div class="quote_words">"${q.text}"</div>
+      <div class="quote_person">- ${q.author}</div>
+      <button class="click_button" onclick="saveFav()">❤️ Save Quote</button>
+      <button class="click_button" onclick="shareQuote()">📤 Share Quote</button>
+    `;
+        }
+
+        function saveFav(index = null, obj = null) {
+            let q = obj || (index !== null ? allQuotes[index] : oneQuote);
+            if (!q) return;
+            let ok = !myFavs.some(f => f.text === q.text && f.author === q.author);
+            if (ok) {
+                myFavs.push(q);
+                localStorage.setItem("my_favorites", JSON.stringify(myFavs));
+                addToStats("favs");
+                alert("Saved!");
+            } else {
+                alert("Already saved.");
+            }
+        }
+
+        function showFavs() {
+            let area = document.getElementById("favorite_quotes_area");
+            if (myFavs.length === 0) {
+                area.innerHTML = "<div class='info_box'><p>No saved quotes.</p></div>";
+                return;
+            }
+            area.innerHTML = "";
+            myFavs.forEach((q, i) => {
+                let box = document.createElement("div");
+                box.className = "saved_item";
+                box.innerHTML = `
+        <div class="quote_words">"${q.text}"</div>
+        <div class="quote_person">- ${q.author}</div>
+        <button class="click_button" onclick="removeFav(${i})">🗑️ Remove</button>
+      `;
+                area.appendChild(box);
+            });
+        }
+
+        function removeFav(i) {
+            myFavs.splice(i, 1);
+            localStorage.setItem("my_favorites", JSON.stringify(myFavs));
+            showFavs();
+            addToStats("favs");
+        }
+
+        function removeAllFavorites() {
+            myFavs = [];
+            localStorage.setItem("my_favorites", JSON.stringify(myFavs));
+            showFavs();
+            myStats.favs = 0;
+            localStorage.setItem("my_stats", JSON.stringify(myStats));
+            showStats();
+        }
+
+        function addToStats(what) {
+            if (what === "seen") myStats.seen++;
+            if (what === "favs") myStats.favs = myFavs.length;
+            localStorage.setItem("my_stats", JSON.stringify(myStats));
+        }
+
+        function showStats() {
+            document.getElementById("total_quotes_seen").textContent = myStats.seen;
+            document.getElementById("total_favorites").textContent = myFavs.length;
+            document.getElementById("days_using").textContent = myStats.days;
+        }
+
+        function clearAllStats() {
+            myStats = { seen: 0, favs: 0, days: 1 };
+            localStorage.setItem("my_stats", JSON.stringify(myStats));
+            showStats();
+        }
+
+        function shareQuote() {
+            if (!oneQuote) return;
+            let txt = `"${oneQuote.text}" - ${oneQuote.author}`;
+            if (navigator.share) {
+                navigator.share({ text: txt });
+            } else {
+                navigator.clipboard.writeText(txt).then(() => alert("Copied!"));
+            }
+        }
+
+        function sendMessage(e) {
+            e.preventDefault();
+            let name = document.getElementById("user_name").value;
+            let email = document.getElementById("user_email").value;
+            let msg = document.getElementById("user_message").value;
+            let messages = JSON.parse(localStorage.getItem("user_messages")) || [];
+            messages.push({ name, email, msg, date: new Date().toISOString() });
+            localStorage.setItem("user_messages", JSON.stringify(messages));
+            alert("Message sent!");
+            document.querySelector("form").reset();
+        }
+
+        function shareYourQuote() {
+            let your = prompt("Write your quote:");
+            if (your) {
+                let list = JSON.parse(localStorage.getItem("user_suggestions")) || [];
+                list.push({ quote: your, date: new Date().toISOString() });
+                localStorage.setItem("user_suggestions", JSON.stringify(list));
+                alert("Thanks!");
+            }
+        }
+
+        function loadManyQuotes() {
+            let area = document.getElementById("all_quotes_area");
+            area.innerHTML = "<p>Loading...</p>";
+            allQuotes = [
+                { text: "Smile. It's free.", author: "Someone" },
+                { text: "Be nice today.", author: "Yourself" },
+                { text: "You matter.", author: "Unknown" }
+            ];
+            showAllQuotes();
+        }
+
+        function showAllQuotes() {
+            let area = document.getElementById("all_quotes_area");
+            area.innerHTML = "";
+            allQuotes.forEach((q, i) => {
+                let box = document.createElement("div");
+                box.className = "info_box";
+                box.innerHTML = `
+        <div class="quote_words">"${q.text}"</div>
+        <div class="quote_person">- ${q.author}</div>
+        <button class="click_button" onclick="saveFav(${i})">❤️ Save</button>
+      `;
+                area.appendChild(box);
+            });
+        }
+
+        function removeAllQuotes() {
+            document.getElementById("all_quotes_area").innerHTML = "<p>No quotes loaded.</p>";
+        }
+
+        function getQuoteType(type) {
+            let area = document.getElementById("type_quotes_area");
+            area.innerHTML = "<p>Loading...</p>";
+            let stuff = {
+                motivational: [
+                    { text: "Go for it.", author: "Coach" },
+                    { text: "Don't give up!", author: "Mom" }
+                ],
+                success: [
+                    { text: "Try again.", author: "Boss" },
+                    { text: "Push harder.", author: "Mentor" }
+                ],
+                inspirational: [
+                    { text: "You got this.", author: "Friend" },
+                    { text: "Shine bright!", author: "Someone" }
+                ],
+                life: [
+                    { text: "Just live.", author: "Life" },
+                    { text: "Be here now.", author: "Zen" }
+                ]
+            };
+            setTimeout(() => {
+                area.innerHTML = "";
+                let list = stuff[type] || [];
+                list.forEach(q => {
+                    let box = document.createElement("div");
+                    box.className = "quote_box";
+                    box.innerHTML = `
+          <div class="quote_words">"${q.text}"</div>
+          <div class="quote_person">- ${q.author}</div>
+          <button class="click_button" onclick="saveFav(null, ${JSON.stringify(q).replace(/"/g, '&quot;')})">❤️ Save</button>
+        `;
+                    area.appendChild(box);
+                });
+            }, 500);
+        }
+
+        window.onload = function () {
+            getNewQuote();
+            showStats();
+            document.querySelectorAll(".menu_list a").forEach(link => {
+                link.onclick = function () {
+                    changePage(this.getAttribute("onclick").split("'")[1], this);
+                    return false;
+                };
+            });
+        };
+    </script>
+
+</body>
+
+</html>
