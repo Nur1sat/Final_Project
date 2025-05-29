@@ -330,38 +330,47 @@ function shareQuote() {
         navigator.clipboard.writeText(txt).then(() => alert("Copied!"));
     }
 }
+
 async function the(name, email, message) {
-    const formData = new FormData();
+    let formData = new FormData();
     formData.append("Name", name);
     formData.append("Email", email);
     formData.append("Message", message);
 
     try {
-        const response = await fetch("https://script.google.com/d/1fyhTdQG1DUfiKxw9vdZAGJr7nkZ7uoXgTli1r2lhXbWiJhgpFk4_AwdN/edit?usp=sharing", {
+        const response = await fetch("https://script.google.com/macros/s/AKfycbxv1DM6hF0PhDlKWT4e2e6cwnwOBID_J8-lgdh7_XUGUsG0w5vJ7nhPbzhA6CsfNtqIYg/exec", {
             method: "POST",
-            body: formData
+            body: formData,
         });
 
-        const result = await response.json();
-        alert("Success! Message sent.");
-    } catch (error) {
-        alert("Error: " + error.message);
-    }
+        if (!response.ok) {
+            throw new Error("Failed to send message.");
+        }
 
+        const result = await response.json();
+        alert("✅ Success! Message sent.");
+        // Reset form
+        document.getElementById("user_name").value = "";
+        document.getElementById("user_email").value = "";
+        document.getElementById("user_message").value = "";
+    } catch (error) {
+        alert("❌ Error: " + error.message);
+    }
 }
-function sendMessage(e) {
+
+async function sendMessage(e) {
     e.preventDefault();
     let name = document.getElementById("user_name").value;
     let email = document.getElementById("user_email").value;
     let msg = document.getElementById("user_message").value;
+
     let messages = JSON.parse(localStorage.getItem("user_messages")) || [];
     messages.push({ name, email, msg, date: new Date().toISOString() });
     localStorage.setItem("user_messages", JSON.stringify(messages));
-    alert("Message sent!");
-    the(name, email, msg)
 
-
+    await the(name, email, msg); // Wait before alert/reset
 }
+
 
 
 function shareYourQuote() {
