@@ -18,6 +18,12 @@
             background: linear-gradient(90deg, #00f260, #0575e6);
             min-height: 100vh;
             color: white;
+            transition: all 0.3s ease;
+        }
+
+        body.light-theme {
+            background: linear-gradient(90deg, #f0f2f5, #e8ecef);
+            color: #333;
         }
 
         .main_container {
@@ -33,6 +39,12 @@
             top: 0;
             z-index: 1000;
             padding: 15px 0;
+            transition: background 0.3s ease;
+        }
+
+        body.light-theme .top_header {
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .menu_bar {
@@ -45,6 +57,66 @@
             font-size: 24px;
             font-weight: bold;
             color: yellow;
+        }
+
+        body.light-theme .site_logo {
+            color: #0575e6;
+        }
+
+        .header_controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .theme_toggle {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        body.light-theme .theme_toggle {
+            background: rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+
+        .theme_toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        body.light-theme .theme_toggle:hover {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .language_select {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        body.light-theme .language_select {
+            background: rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+
+        .language_select option {
+            background: #333;
+            color: white;
+        }
+
+        body.light-theme .language_select option {
+            background: white;
+            color: #333;
         }
 
         .menu_list {
@@ -61,8 +133,16 @@
             transition: background 0.3s;
         }
 
+        body.light-theme .menu_list a {
+            color: #333;
+        }
+
         .menu_list a:hover {
             background: rgba(255, 255, 255, 0.2);
+        }
+
+        body.light-theme .menu_list a:hover {
+            background: rgba(0, 0, 0, 0.1);
         }
 
         .menu_list a.selected {
@@ -80,6 +160,11 @@
             height: 3px;
             background: white;
             margin: 3px 0;
+            transition: background 0.3s ease;
+        }
+
+        body.light-theme .mobile_menu span {
+            background: #333;
         }
 
         .content_area {
@@ -106,6 +191,10 @@
             color: yellow;
         }
 
+        body.light-theme .big_title h1 {
+            color: #0575e6;
+        }
+
         .big_title p {
             font-size: 18px;
             margin-bottom: 30px;
@@ -118,6 +207,10 @@
             margin: 30px 0;
             text-align: center;
             transition: transform 0.3s;
+        }
+
+        body.light-theme .quote_box {
+            background: rgba(0, 0, 0, 0.05);
         }
 
         .quote_box:hover {
@@ -165,6 +258,10 @@
             transition: transform 0.3s;
         }
 
+        body.light-theme .info_box {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
         .info_box:hover {
             transform: translateY(-5px);
         }
@@ -190,9 +287,20 @@
             font-size: 16px;
         }
 
+        body.light-theme .input_group input,
+        body.light-theme .input_group textarea {
+            background: rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+
         .input_group input::placeholder,
         .input_group textarea::placeholder {
             color: rgba(255, 255, 255, 0.7);
+        }
+
+        body.light-theme .input_group input::placeholder,
+        body.light-theme .input_group textarea::placeholder {
+            color: rgba(0, 0, 0, 0.5);
         }
 
         .loading_area {
@@ -208,6 +316,11 @@
             border-radius: 50%;
             animation: spin_around 1s linear infinite;
             margin: 0 auto 20px;
+        }
+
+        body.light-theme .loading_circle {
+            border: 5px solid rgba(0, 0, 0, 0.3);
+            border-top: 5px solid #333;
         }
 
         @keyframes spin_around {
@@ -233,6 +346,10 @@
             border-left: 4px solid orange;
         }
 
+        body.light-theme .saved_item {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
         .number_boxes {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -247,10 +364,18 @@
             text-align: center;
         }
 
+        body.light-theme .number_box {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
         .big_number {
             font-size: 36px;
             font-weight: bold;
             color: yellow;
+        }
+
+        body.light-theme .big_number {
+            color: #0575e6;
         }
 
         @media (max-width: 768px) {
@@ -263,6 +388,10 @@
                 background: rgba(0, 0, 0, 0.9);
                 flex-direction: column;
                 padding: 20px;
+            }
+
+            body.light-theme .menu_list {
+                background: rgba(255, 255, 255, 0.95);
             }
 
             .menu_list.show_mobile {
@@ -284,6 +413,10 @@
             .box_container {
                 grid-template-columns: 1fr;
             }
+
+            .header_controls {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -301,6 +434,14 @@
                     <li><a href="#" onclick="changePage('stats')">Stats</a></li>
                     <li><a href="#" onclick="changePage('contact')">Contact</a></li>
                 </ul>
+                <div class="header_controls">
+                    <select class="language_select" id="languageSelect" onchange="changeLanguage()">
+                        <option value="en">English</option>
+                        <option value="ru">Русский</option>
+                        <option value="kz">Қазақша</option>
+                    </select>
+                    <button class="theme_toggle" id="themeToggle" onclick="toggleTheme()">🌙 Dark</button>
+                </div>
                 <div class="mobile_menu" onclick="showMobileMenu()">
                     <span></span>
                     <span></span>
@@ -314,113 +455,114 @@
         <div class="content_area">
             <div id="home" class="single_page show">
                 <div class="big_title">
-                    <h1>Daily Motivation</h1>
-                    <p>Get inspired with amazing quotes every day</p>
-                    <button class="click_button" onclick="getNewQuote()">Get New Quote</button>
+                    <h1 id="mainTitle">Daily Motivation</h1>
+                    <p id="mainSubtitle">Get inspired with amazing quotes every day</p>
+                    <button class="click_button" id="newQuoteBtn" onclick="getNewQuote()">Get New Quote</button>
                 </div>
                 <div id="main_quote" class="quote_box">
                     <div class="loading_area">
                         <div class="loading_circle"></div>
-                        <p>Getting your quote...</p>
+                        <p id="loadingText">Getting your quote...</p>
                     </div>
                 </div>
             </div>
 
             <div id="quotes" class="single_page">
-                <h1>All Quotes</h1>
+                <h1 id="allQuotesTitle">All Quotes</h1>
                 <div class="info_box">
-                    <button class="click_button" onclick="loadManyQuotes()">Load Quotes</button>
-                    <button class="click_button" onclick="removeAllQuotes()">Clear All</button>
+                    <button class="click_button" id="loadQuotesBtn" onclick="loadManyQuotes()">Load Quotes</button>
+                    <button class="click_button" id="clearAllBtn" onclick="removeAllQuotes()">Clear All</button>
                 </div>
                 <div id="all_quotes_area" class="box_container"></div>
             </div>
 
             <div id="categories" class="single_page">
-                <h1>Quote Types</h1>
+                <h1 id="categoriesTitle">Quote Types</h1>
                 <div class="box_container">
                     <div class="info_box" onclick="getQuoteType('motivational')">
-                        <h3>💪 Motivational</h3>
-                        <p>Quotes to keep you going</p>
+                        <h3>💪 <span id="motivationalTitle">Motivational</span></h3>
+                        <p id="motivationalDesc">Quotes to keep you going</p>
                     </div>
                     <div class="info_box" onclick="getQuoteType('success')">
-                        <h3>🏆 Success</h3>
-                        <p>Quotes about winning</p>
+                        <h3>🏆 <span id="successTitle">Success</span></h3>
+                        <p id="successDesc">Quotes about winning</p>
                     </div>
                     <div class="info_box" onclick="getQuoteType('inspirational')">
-                        <h3>⭐ Inspirational</h3>
-                        <p>Quotes to inspire you</p>
+                        <h3>⭐ <span id="inspirationalTitle">Inspirational</span></h3>
+                        <p id="inspirationalDesc">Quotes to inspire you</p>
                     </div>
                     <div class="info_box" onclick="getQuoteType('life')">
-                        <h3>🌟 Life</h3>
-                        <p>Quotes about living</p>
+                        <h3>🌟 <span id="lifeTitle">Life</span></h3>
+                        <p id="lifeDesc">Quotes about living</p>
                     </div>
                 </div>
                 <div id="type_quotes_area"></div>
             </div>
 
             <div id="favorites" class="single_page">
-                <h1>My Favorite Quotes</h1>
+                <h1 id="favoritesTitle">My Favorite Quotes</h1>
                 <div class="info_box">
-                    <p>Save quotes you like here!</p>
-                    <button class="click_button" onclick="removeAllFavorites()">Clear All Favorites</button>
+                    <p id="favoritesDesc">Save quotes you like here!</p>
+                    <button class="click_button" id="clearFavoritesBtn" onclick="removeAllFavorites()">Clear All
+                        Favorites</button>
                 </div>
                 <div id="favorite_quotes_area" class="saved_quotes"></div>
             </div>
 
             <div id="stats" class="single_page">
-                <h1>My Stats</h1>
+                <h1 id="statsTitle">My Stats</h1>
                 <div class="number_boxes">
                     <div class="number_box">
                         <div class="big_number" id="total_quotes_seen">0</div>
-                        <p>Quotes Seen</p>
+                        <p id="quotesSeenLabel">Quotes Seen</p>
                     </div>
                     <div class="number_box">
                         <div class="big_number" id="total_favorites">0</div>
-                        <p>Favorites</p>
+                        <p id="favoritesLabel">Favorites</p>
                     </div>
                     <div class="number_box">
                         <div class="big_number" id="days_using">1</div>
-                        <p>Days Using App</p>
+                        <p id="daysUsingLabel">Days Using App</p>
                     </div>
                 </div>
                 <div class="info_box">
-                    <h3>Your Progress</h3>
-                    <p>Keep using the app daily!</p>
-                    <button class="click_button" onclick="clearAllStats()">Reset All Stats</button>
+                    <h3 id="progressTitle">Your Progress</h3>
+                    <p id="progressDesc">Keep using the app daily!</p>
+                    <button class="click_button" id="resetStatsBtn" onclick="clearAllStats()">Reset All Stats</button>
                 </div>
             </div>
 
             <div id="contact" class="single_page">
-                <h1>Contact Us</h1>
+                <h1 id="contactTitle">Contact Us</h1>
                 <div class="box_container">
                     <div class="info_box">
-                        <h3 style="padding-bottom:50px;">Send Message</h3>
+                        <h3 style="padding-bottom:50px;" id="sendMessageTitle">Send Message</h3>
                         <form onsubmit="sendMessage(event)">
                             <div class="input_group">
-                                <label for="user_name">Your Name</label>
+                                <label for="user_name" id="nameLabel">Your Name</label>
                                 <input type="text" id="user_name" required placeholder="Enter your name">
                             </div>
                             <div class="input_group">
-                                <label for="user_email">Your Email</label>
+                                <label for="user_email" id="emailLabel">Your Email</label>
                                 <input type="email" id="user_email" required placeholder="Enter your email">
                             </div>
                             <div class="input_group">
-                                <label for="user_message">Your Message</label>
+                                <label for="user_message" id="messageLabel">Your Message</label>
                                 <textarea id="user_message" rows="5" required
                                     placeholder="Write your message..."></textarea>
                             </div>
-                            <button type="submit" class="click_button">Send Message</button>
+                            <button type="submit" class="click_button" id="sendBtn">Send Message</button>
                         </form>
                     </div>
                     <div class="info_box">
-                        <h3>Contact Info</h3>
+                        <h3 id="contactInfoTitle">Contact Info</h3>
                         <p>📧 zhaksybaevnursat@gmail.com</p>
                         <p>📱 +7(747)-360-6910</p>
-                        <p>🌐 Follow us online</p>
+                        <p id="followUsText">🌐 Follow us online</p>
                         <br>
-                        <h4>Send Us a Quote</h4>
-                        <p>Have a good quote? Share it!</p>
-                        <button class="click_button" onclick="shareYourQuote()">Share Quote</button>
+                        <h4 id="shareQuoteTitle">Send Us a Quote</h4>
+                        <p id="shareQuoteDesc">Have a good quote? Share it!</p>
+                        <button class="click_button" id="shareBtn" onclick="shareYourQuote()">Share Quote</button>
                     </div>
                 </div>
             </div>
@@ -436,11 +578,220 @@
             days: 1
         };
 
+        const translations = {
+            en: {
+                mainTitle: "Daily Motivation",
+                mainSubtitle: "Get inspired with amazing quotes every day",
+                newQuoteBtn: "Get New Quote",
+                loadingText: "Getting your quote...",
+                allQuotesTitle: "All Quotes",
+                loadQuotesBtn: "Load Quotes",
+                clearAllBtn: "Clear All",
+                categoriesTitle: "Quote Types",
+                motivationalTitle: "Motivational",
+                motivationalDesc: "Quotes to keep you going",
+                successTitle: "Success",
+                successDesc: "Quotes about winning",
+                inspirationalTitle: "Inspirational",
+                inspirationalDesc: "Quotes to inspire you",
+                lifeTitle: "Life",
+                lifeDesc: "Quotes about living",
+                favoritesTitle: "My Favorite Quotes",
+                favoritesDesc: "Save quotes you like here!",
+                clearFavoritesBtn: "Clear All Favorites",
+                statsTitle: "My Stats",
+                quotesSeenLabel: "Quotes Seen",
+                favoritesLabel: "Favorites",
+                daysUsingLabel: "Days Using App",
+                progressTitle: "Your Progress",
+                progressDesc: "Keep using the app daily!",
+                resetStatsBtn: "Reset All Stats",
+                contactTitle: "Contact Us",
+                sendMessageTitle: "Send Message",
+                nameLabel: "Your Name",
+                emailLabel: "Your Email",
+                messageLabel: "Your Message",
+                sendBtn: "Send Message",
+                contactInfoTitle: "Contact Info",
+                followUsText: "🌐 Follow us online",
+                shareQuoteTitle: "Send Us a Quote",
+                shareQuoteDesc: "Have a good quote? Share it!",
+                shareBtn: "Share Quote",
+                homeNav: "Home",
+                quotesNav: "Quotes",
+                categoriesNav: "Categories",
+                favoritesNav: "Favorites",
+                statsNav: "Stats",
+                contactNav: "Contact"
+            },
+            ru: {
+                mainTitle: "Ежедневная Мотивация",
+                mainSubtitle: "Вдохновляйтесь удивительными цитатами каждый день",
+                newQuoteBtn: "Получить Новую Цитату",
+                loadingText: "Загружаем вашу цитату...",
+                allQuotesTitle: "Все Цитаты",
+                loadQuotesBtn: "Загрузить Цитаты",
+                clearAllBtn: "Очистить Все",
+                categoriesTitle: "Типы Цитат",
+                motivationalTitle: "Мотивационные",
+                motivationalDesc: "Цитаты, чтобы продолжать идти",
+                successTitle: "Успех",
+                successDesc: "Цитаты о победе",
+                inspirationalTitle: "Вдохновляющие",
+                inspirationalDesc: "Цитаты для вдохновения",
+                lifeTitle: "Жизнь",
+                lifeDesc: "Цитаты о жизни",
+                favoritesTitle: "Мои Любимые Цитаты",
+                favoritesDesc: "Сохраняйте понравившиеся цитаты здесь!",
+                clearFavoritesBtn: "Очистить Все Избранные",
+                statsTitle: "Моя Статистика",
+                quotesSeenLabel: "Просмотрено Цитат",
+                favoritesLabel: "Избранные",
+                daysUsingLabel: "Дней Использования",
+                progressTitle: "Ваш Прогресс",
+                progressDesc: "Продолжайте использовать приложение ежедневно!",
+                resetStatsBtn: "Сбросить Всю Статистику",
+                contactTitle: "Связаться с Нами",
+                sendMessageTitle: "Отправить Сообщение",
+                nameLabel: "Ваше Имя",
+                emailLabel: "Ваш Email",
+                messageLabel: "Ваше Сообщение",
+                sendBtn: "Отправить Сообщение",
+                contactInfoTitle: "Контактная Информация",
+                followUsText: "🌐 Следите за нами онлайн",
+                shareQuoteTitle: "Отправить Нам Цитату",
+                shareQuoteDesc: "Есть хорошая цитата? Поделитесь!",
+                shareBtn: "Поделиться Цитатой",
+                homeNav: "Главная",
+                quotesNav: "Цитаты",
+                categoriesNav: "Категории",
+                favoritesNav: "Избранное",
+                statsNav: "Статистика",
+                contactNav: "Контакты"
+            },
+            kz: {
+                mainTitle: "Күнделікті Мотивация",
+                mainSubtitle: "Әр күн керемет дәйексөздермен рухтаныңыз",
+                newQuoteBtn: "Жаңа Дәйексөз Алу",
+                loadingText: "Дәйексөзіңізді алып жатырмыз...",
+                allQuotesTitle: "Барлық Дәйексөздер",
+                loadQuotesBtn: "Дәйексөздерді Жүктеу",
+                clearAllBtn: "Барлығын Тазалау",
+                categoriesTitle: "Дәйексөз Түрлері",
+                motivationalTitle: "Мотивациялық",
+                motivationalDesc: "Алға жүруге көмектесетін дәйексөздер",
+                successTitle: "Табыс",
+                successDesc: "Жеңіс туралы дәйексөздер",
+                inspirationalTitle: "Рухтандырушы",
+                inspirationalDesc: "Рухтандыратын дәйексөздер",
+                lifeTitle: "Өмір",
+                lifeDesc: "Өмір туралы дәйексөздер",
+                favoritesTitle: "Менің Сүйікті Дәйексөздерім",
+                favoritesDesc: "Ұнаған дәйексөздеріңізді осында сақтаңыз!",
+                clearFavoritesBtn: "Барлық Сүйіктіні Тазалау",
+                statsTitle: "Менің Статистикам",
+                quotesSeenLabel: "Көрілген Дәйексөздер",
+                favoritesLabel: "Сүйіктілер",
+                daysUsingLabel: "Қолданған Күндер",
+                progressTitle: "Сіздің Прогрессіңіз",
+                progressDesc: "Қосымшаны күн сайын пайдалануды жалғастырыңыз!",
+                resetStatsBtn: "Барлық Статистиканы Тастау",
+                contactTitle: "Бізбен Байланысу",
+                sendMessageTitle: "Хабарлама Жіберу",
+                nameLabel: "Сіздің Атыңыз",
+                emailLabel: "Сіздің Email",
+                messageLabel: "Сіздің Хабарламаңыз",
+                sendBtn: "Хабарлама Жіберу",
+                contactInfoTitle: "Байланыс Ақпараты",
+                followUsText: "🌐 Бізді онлайн бақылаңыз",
+                shareQuoteTitle: "Бізге Дәйексөз Жіберу",
+                shareQuoteDesc: "Жақсы дәйексөз бар ма? Бөлісіңіз!",
+                shareBtn: "Дәйексөз Бөлісу",
+                homeNav: "Басты",
+                quotesNav: "Дәйексөздер",
+                categoriesNav: "Санаттар",
+                favoritesNav: "Сүйіктілер",
+                statsNav: "Статистика",
+                contactNav: "Байланыс"
+            }
+        };
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.getElementById('themeToggle');
+
+            if (body.classList.contains('light-theme')) {
+                body.classList.remove('light-theme');
+                themeToggle.textContent = '🌙 Dark';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.add('light-theme');
+                themeToggle.textContent = '☀️ Light';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        function changeLanguage() {
+            const select = document.getElementById('languageSelect');
+            const lang = select.value;
+            const texts = translations[lang];
+
+            Object.keys(texts).forEach(key => {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.textContent = texts[key];
+                }
+            });
+
+            const navItems = document.querySelectorAll('.menu_list a');
+            const navTexts = [texts.homeNav, texts.quotesNav, texts.categoriesNav, texts.favoritesNav, texts.statsNav, texts.contactNav];
+            navItems.forEach((item, index) => {
+                if (navTexts[index]) {
+                    item.textContent = navTexts[index];
+                }
+            });
+
+            const nameInput = document.getElementById('user_name');
+            const emailInput = document.getElementById('user_email');
+            const messageInput = document.getElementById('user_message');
+
+            if (lang === 'ru') {
+                nameInput.placeholder = 'Введите ваше имя';
+                emailInput.placeholder = 'Введите ваш email';
+                messageInput.placeholder = 'Напишите ваше сообщение...';
+            } else if (lang === 'kz') {
+                nameInput.placeholder = 'Атыңызды енгізіңіз';
+                emailInput.placeholder = 'Email енгізіңіз';
+                messageInput.placeholder = 'Хабарламаңызды жазыңыз...';
+            } else {
+                nameInput.placeholder = 'Enter your name';
+                emailInput.placeholder = 'Enter your email';
+                messageInput.placeholder = 'Write your message...';
+            }
+
+            localStorage.setItem('language', lang);
+        }
+
+        function loadPreferences() {
+            const savedTheme = localStorage.getItem('theme');
+            const savedLanguage = localStorage.getItem('language');
+
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-theme');
+                document.getElementById('themeToggle').textContent = '☀️ Light';
+            }
+
+            if (savedLanguage) {
+                document.getElementById('languageSelect').value = savedLanguage;
+                changeLanguage();
+            }
+        }
+
         function changePage(page, link) {
             document.querySelectorAll('.single_page').forEach(p => p.classList.remove('show'));
             document.querySelectorAll('.menu_list a').forEach(a => a.classList.remove('selected'));
             document.getElementById(page).classList.add('show');
-            link.classList.add('selected');
+            if (link) link.classList.add('selected');
 
             if (page === "favorites") showFavs();
             if (page === "stats") showStats();
@@ -641,6 +992,7 @@
         }
 
         window.onload = function () {
+            loadPreferences();
             getNewQuote();
             showStats();
             document.querySelectorAll(".menu_list a").forEach(link => {
