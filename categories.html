@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Motivation - Home</title>
+    <title>Daily Motivation - Categories</title>
     <link rel="shortcut icon" href="./assets/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="./style.css">
 </head>
@@ -15,9 +15,9 @@
             <div class="menu_bar">
                 <div class="site_logo">Daily Motivation</div>
                 <ul class="menu_list">
-                    <li><a href="index.html" class="selected">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="quotes.html">Quotes</a></li>
-                    <li><a href="categories.html">Categories</a></li>
+                    <li><a href="categories.html" class="selected">Categories</a></li>
                     <li><a href="favorites.html">Favorites</a></li>
                     <li><a href="stats.html">Stats</a></li>
                     <li><a href="contact.html">Contact</a></li>
@@ -41,17 +41,26 @@
 
     <main class="main_container">
         <div class="content_area">
-            <div class="big_title">
-                <h1 id="mainTitle">Daily Motivation</h1>
-                <p id="mainSubtitle">Get inspired with amazing quotes every day</p>
-                <button class="click_button" id="newQuoteBtn" onclick="getNewQuote()">Get New Quote</button>
-            </div>
-            <div id="main_quote" class="quote_box">
-                <div class="loading_area">
-                    <div class="loading_circle"></div>
-                    <p id="loadingText">Getting your quote...</p>
+            <h1 id="categoriesTitle">Quote Types</h1>
+            <div class="box_container">
+                <div class="info_box" onclick="getQuoteType('motivational')">
+                    <h3>💪 <span id="motivationalTitle">Motivational</span></h3>
+                    <p id="motivationalDesc">Quotes to keep you going</p>
+                </div>
+                <div class="info_box" onclick="getQuoteType('success')">
+                    <h3>🏆 <span id="successTitle">Success</span></h3>
+                    <p id="successDesc">Quotes about winning</p>
+                </div>
+                <div class="info_box" onclick="getQuoteType('inspirational')">
+                    <h3>⭐ <span id="inspirationalTitle">Inspirational</span></h3>
+                    <p id="inspirationalDesc">Quotes to inspire you</p>
+                </div>
+                <div class="info_box" onclick="getQuoteType('life')">
+                    <h3>🌟 <span id="lifeTitle">Life</span></h3>
+                    <p id="lifeDesc">Quotes about living</p>
                 </div>
             </div>
+            <div id="type_quotes_area"></div>
         </div>
     </main>
     <script src="./script.js"></script>

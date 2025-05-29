@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Motivation - Contact</title>
+    <link rel="shortcut icon" href="./assets/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <header class="top_header">
+        <nav class="main_container">
+            <div class="menu_bar">
+                <div class="site_logo">Daily Motivation</div>
+                <ul class="menu_list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="quotes.html">Quotes</a></li>
+                    <li><a href="categories.html">Categories</a></li>
+                    <li><a href="favorites.html">Favorites</a></li>
+                    <li><a href="stats.html">Stats</a></li>
+                    <li><a href="contact.html" class="selected">Contact</a></li>
+                </ul>
+                <div class="header_controls">
+                    <select class="language_select" id="languageSelect" onchange="changeLanguage()">
+                        <option value="en">English</option>
+                        <option value="ru">Русский</option>
+                        <option value="kz">Қазақша</option>
+                    </select>
+                    <button class="theme_toggle" id="themeToggle" onclick="toggleTheme()">🌙 Dark</button>
+                </div>
+                <div class="mobile_menu" onclick="showMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main_container">
+        <div class="content_area">
+            <h1 id="contactTitle">Contact Us</h1>
+            <div class="box_container">
+                <div class="info_box">
+                    <h3 style="padding-bottom:50px;" id="sendMessageTitle">Send Message</h3>
+                    <form onsubmit="sendMessage(event)"
+                        action="https://script.google.com/d/1fyhTdQG1DUfiKxw9vdZAGJr7nkZ7uoXgTli1r2lhXbWiJhgpFk4_AwdN/edit?usp=sharing">
+                        <div class="input_group">
+                            <label for="user_name" id="nameLabel">Your Name</label>
+                            <input type="text" id="user_name" required placeholder="Enter your name">
+                        </div>
+                        <div class="input_group">
+                            <label for="user_email" id="emailLabel">Your Email</label>
+                            <input type="email" id="user_email" required placeholder="Enter your email">
+                        </div>
+                        <div class="input_group">
+                            <label for="user_message" id="messageLabel">Your Message</label>
+                            <textarea id="user_message" rows="5" required
+                                placeholder="Write your message..."></textarea>
+                        </div>
+                        <button type="submit" class="click_button" id="sendBtn">Send Message</button>
+                    </form>
+                </div>
+                <div class="info_box">
+                    <h3 id="contactInfoTitle">Contact Info</h3>
+                    <p>📧 zhaksybaevnursat@gmail.com</p>
+                    <p>📱 +7(747)-360-6910</p>
+                    <p id="followUsText">🌐 Follow us online</p>
+                    <br>
+                    <h4 id="shareQuoteTitle">Send Us a Quote</h4>
+                    <p id="shareQuoteDesc">Have a good quote? Share it!</p>
+                    <button class="click_button" id="shareBtn" onclick="shareYourQuote()">Share Quote</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="./script.js"></script>
+</body>
+
+</html>
