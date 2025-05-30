@@ -254,6 +254,7 @@ function showQuote(q, box) {
     `;
 }
 
+
 function saveFav(index = null, obj = null) {
     let q = obj || (index !== null ? allQuotes[index] : oneQuote);
     if (!q) return;
